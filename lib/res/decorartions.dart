@@ -5,7 +5,7 @@ class Decorations {
   static final ourOutlinedBorder = BoxDecoration(
     border: Border.all(
       color: OurColors.primary,
-      width: 2,
+      width: 1,
     )
   );
 }

@@ -14,11 +14,11 @@ class ButtonOutlined extends StatelessWidget {
       height: 48,
       child: OutlinedButton(
         style: Styles.buttonOutlined,
+        onPressed: buttonFunction,
         child: const Text(
           Strings.btnBegin,
           style: Styles.textButtonOutlined,
         ),
-        onPressed: buttonFunction,
       ),
     );
   }

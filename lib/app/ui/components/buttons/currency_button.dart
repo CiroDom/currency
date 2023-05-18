@@ -34,7 +34,6 @@ class _CurrencyButtonState extends State<CurrencyButton> {
     }
 
     return SizedBox(
-      width: 328,
       height: 72,
       child: GestureDetector(
         onTap: widget.isResultThere ? null : select,

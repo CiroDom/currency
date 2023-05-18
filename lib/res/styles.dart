@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 class Styles {
   static const buttonOutlined = ButtonStyle(
     elevation: MaterialStatePropertyAll(0.0),
-    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.zero),
-      side: BorderSide(
+    side: MaterialStatePropertyAll<BorderSide>(
+      BorderSide(
         color: OurColors.primary,
+        width: 1,
       ),
-    )),
+    ),
+    overlayColor: MaterialStatePropertyAll(OurColors.primary),
   );
 
   static const buttonFullOn = ButtonStyle(
@@ -57,4 +58,24 @@ class Styles {
       fontFamily: 'Poppins',
       fontSize: 16,
       fontWeight: FontWeight.w400);
+
+  static const header = TextStyle(
+      color: OurColors.primary,
+      fontFamily: 'Poppins',
+      fontSize: 20,
+      fontWeight: FontWeight.w400);
+
+  static const textNextHeader = TextStyle(
+    color: OurColors.text1,
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: FontWeight.w400
+  );
+
+  static const textNextHeaderBold = TextStyle(
+    color: OurColors.text1,
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: FontWeight.w700
+  );
 }

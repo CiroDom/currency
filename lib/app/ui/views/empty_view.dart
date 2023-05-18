@@ -1,6 +1,7 @@
 import 'package:cotadacao_moedas_app/app/ui/components/app_bars/title_app_bar.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/strings.dart';
@@ -11,9 +12,17 @@ class EmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: OurColors.body,
-      appBar: const PreferredSize(preferredSize: Size(double.infinity, 0), child: const TitleAppBar(emptyView: false)),
+      appBar: AppBar(
+      backgroundColor: OurColors.body,
+      elevation: 0.0,
+      title: const Text(
+        Strings.appBarTitle,
+        style: Styles.titleAppBar,
+      ),
+    ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

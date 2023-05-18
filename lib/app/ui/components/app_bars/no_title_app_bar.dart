@@ -1,7 +1,7 @@
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
-class NoTitleAppBar extends StatelessWidget implements PreferredSizeWidget {
+class NoTitleAppBar extends StatelessWidget {
   const NoTitleAppBar({super.key, required this.buttonFunction});
 
   final VoidCallback buttonFunction;
@@ -9,6 +9,7 @@ class NoTitleAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: OurColors.body,
       elevation: 0.0,
       leading: IconButton(
@@ -20,7 +21,4 @@ class NoTitleAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-  
-  @override
-  Size get preferredSize => throw UnimplementedError();
 }

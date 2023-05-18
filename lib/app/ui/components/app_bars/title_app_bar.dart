@@ -12,6 +12,7 @@ class TitleAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: OurColors.body,
       elevation: 0.0,
       title: const Text(
