@@ -1,7 +1,6 @@
-import 'package:cotadacao_moedas_app/app/ui/components/app_bars/title_app_bar.dart';
+import 'package:cotadacao_moedas_app/app/ui/views/base_currency_view.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/strings.dart';
@@ -12,17 +11,21 @@ class EmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void goToBaseCurrencyView() {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => BaseCurrencyView()));
+    }
 
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: AppBar(
-      backgroundColor: OurColors.body,
-      elevation: 0.0,
-      title: const Text(
-        Strings.appBarTitle,
-        style: Styles.titleAppBar,
+        backgroundColor: OurColors.body,
+        elevation: 0.0,
+        title: const Text(
+          Strings.appBarTitle,
+          style: Styles.titleAppBar,
+        ),
       ),
-    ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -34,8 +37,12 @@ class EmptyView extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: Styles.textEmptyView,
               ),
-              const SizedBox(height: 12,),
-              ButtonOutlined(buttonFunction: () {},)
+              const SizedBox(
+                height: 12,
+              ),
+              ButtonOutlined(
+                buttonFunction: goToBaseCurrencyView,
+              )
             ],
           ),
         ],

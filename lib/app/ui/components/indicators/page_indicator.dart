@@ -9,28 +9,36 @@ class PageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double side = 20.0;
-    const double space = 5.0;
+    const double spaceBetween = 5.0;
+    const double paddBottom = 14.0;
 
-    return Row(
-      children: [
-        SizedBox(
-          width: side,
-          height: side,
-          child: Container(
-            color: isBaseCurrencyView ? OurColors.primary : OurColors.backgroundAndText2,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: paddBottom),
+      child: Row(
+        children: [
+          SizedBox(
+            width: side,
+            height: side,
+            child: Container(
+              color: isBaseCurrencyView
+                  ? OurColors.primary
+                  : OurColors.backgroundAndText2,
+            ),
           ),
-        ),
-        const SizedBox(
-          width: space,
-        ),
-        SizedBox(
-          width: side,
-          height: side,
-          child: Container(
-            color: isBaseCurrencyView ? OurColors.backgroundAndText2 : OurColors.primary,
+          const SizedBox(
+            width: spaceBetween,
           ),
-        )
-      ],
+          SizedBox(
+            width: side,
+            height: side,
+            child: Container(
+              color: isBaseCurrencyView
+                  ? OurColors.backgroundAndText2
+                  : OurColors.primary,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

@@ -6,11 +6,11 @@ class Strings {
 
   static const appBarTitle = 'Cubos Currency';
 
-  static const brl = 'Real';
-  static const usd = 'Dólar Americano';
-  static const gpb = 'Libra Esterlina';
-  static const ars = 'Peso Argentino';
-  static const jpy = 'Iene';
+  static const brl = 'real';
+  static const usd = 'dólar americano';
+  static const gpb = 'libra esterlina';
+  static const eur = 'euro';
+  static const aud = 'dólar australiano';
 
   static const newExchangeHeader = 'Novo acompanhamento';
   static const historicExchangeHeader = 'Histórico de preços';

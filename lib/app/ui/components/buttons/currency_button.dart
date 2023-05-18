@@ -1,26 +1,29 @@
+import 'package:cotadacao_moedas_app/app/core/enums/abbr_currency.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../res/decorartions.dart';
+import '../../../../res/strings.dart';
 import '../../../../res/styles.dart';
-
 
 class CurrencyButton extends StatefulWidget {
   const CurrencyButton(
       {super.key,
-      required this.name,
+      required this.abbr,
       required this.isResultThere,
-      required this.price});
+      this.price,});
 
-  final String name;
+  final AbbrCurrency abbr;
   final bool isResultThere;
-  final String price;
+  final String? price;
 
   @override
   State<CurrencyButton> createState() => _CurrencyButtonState();
 }
 
 class _CurrencyButtonState extends State<CurrencyButton> {
+  void goToNextStep() {}
+
   @override
   Widget build(BuildContext context) {
     bool isSelected = false;
@@ -29,8 +32,12 @@ class _CurrencyButtonState extends State<CurrencyButton> {
       isSelected = true;
     }
 
-    void goToNextStep() {
-
+    String naming() {
+      if (widget.abbr == AbbrCurrency.aud) return Strings.aud;
+      if (widget.abbr == AbbrCurrency.brl) return Strings.brl;
+      if (widget.abbr == AbbrCurrency.eur) return Strings.eur;
+      if (widget.abbr == AbbrCurrency.gpb) return Strings.gpb;
+      return Strings.usd;
     }
 
     return SizedBox(
@@ -58,14 +65,16 @@ class _CurrencyButtonState extends State<CurrencyButton> {
                     width: 20,
                   ),
                   Text(
-                    widget.name,
-                    style: isSelected ? Styles.currencyBtnSelected : Styles.currencyBtnUnselected,
+                    naming(),
+                    style: isSelected
+                        ? Styles.currencyBtnSelected
+                        : Styles.currencyBtnUnselected,
                   ),
                   widget.isResultThere
                       ? Text(
-                          widget.price,
+                          widget.price!,
                         )
-                      : SizedBox()
+                      : const SizedBox()
                 ],
               )
             ],
