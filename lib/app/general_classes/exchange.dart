@@ -1,5 +1,5 @@
-import 'package:cotadacao_moedas_app/app/core/enums/how_expansive.dart';
-import 'package:cotadacao_moedas_app/app/core/models/currency.dart';
+import '../general_classes/enums/how_expansive.dart';
+import 'currency.dart';
 
 class Exchange {
   Exchange({

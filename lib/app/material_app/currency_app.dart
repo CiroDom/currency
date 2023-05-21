@@ -1,4 +1,5 @@
-import 'package:cotadacao_moedas_app/app/ui/views/empty_view.dart';
+import 'package:cotadacao_moedas_app/app/view_base_currency/base_currency_view.dart';
+import 'package:cotadacao_moedas_app/app/view_empty/empty_view.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyApp extends StatelessWidget {
@@ -6,9 +7,9 @@ class CurrencyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const EmptyView(),
+      home: BaseCurrencyView(),
     );
   }
 }

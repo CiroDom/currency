@@ -1,6 +1,7 @@
-import 'package:cotadacao_moedas_app/app/core/enums/abbr_currency.dart';
-import 'package:cotadacao_moedas_app/app/core/models/currency.dart';
 import 'package:dio/dio.dart';
+
+import '../currency.dart';
+import '../enums/abbr_currency.dart';
 
 class CurrencyRepo {
   final _dio = Dio(

@@ -1,11 +1,10 @@
-import 'package:cotadacao_moedas_app/app/core/enums/abbr_currency.dart';
-import 'package:cotadacao_moedas_app/app/ui/components/buttons/currency_button.dart';
-import 'package:cotadacao_moedas_app/app/ui/components/headers_and_cia/header_new_exchange.dart';
-import 'package:cotadacao_moedas_app/app/ui/components/headers_and_cia/text_base.dart';
-import 'package:cotadacao_moedas_app/app/ui/components/indicators/page_indicator.dart';
+import 'package:cotadacao_moedas_app/app/view_base_currency/base_presenter.dart';
 import 'package:flutter/material.dart';
 
-import '../../../res/our_colors.dart';
+import '../../res/our_colors.dart';
+import '../components/headers/header_new_exchange.dart';
+import '../components/indicators/page_indicator.dart';
+import '../components/texts/text_base.dart';
 
 class BaseCurrencyView extends StatefulWidget {
   const BaseCurrencyView({super.key});
@@ -15,7 +14,6 @@ class BaseCurrencyView extends StatefulWidget {
 }
 
 class _BaseCurrencyViewState extends State<BaseCurrencyView> {
-
   @override
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
@@ -23,6 +21,8 @@ class _BaseCurrencyViewState extends State<BaseCurrencyView> {
     void goBackToEmptyView() {
       Navigator.of(context).pop();
     }
+
+    final basePresenter = BasePresenter();
 
     return Scaffold(
       backgroundColor: OurColors.body,
@@ -54,11 +54,8 @@ class _BaseCurrencyViewState extends State<BaseCurrencyView> {
                 ),
                 Expanded(
                   child: ListView.separated(
-                    itemCount: AbbrCurrency.values.length,
-                    itemBuilder: (context, index) => CurrencyButton(
-                      abbr: AbbrCurrency.values[index],
-                      isResultThere: false,
-                    ),
+                    itemCount: basePresenter.listLenght,
+                    itemBuilder: (context, index) => basePresenter.getCurrencyTile(index),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10.0),
                   ),
@@ -68,9 +65,7 @@ class _BaseCurrencyViewState extends State<BaseCurrencyView> {
             const Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                PageIndicator(isBaseCurrencyView: true)
-              ],
+              children: [PageIndicator(isBaseCurrencyView: true)],
             ),
           ],
         ),

@@ -1,9 +1,9 @@
-import 'package:cotadacao_moedas_app/app/ui/views/base_currency_view.dart';
+import 'package:cotadacao_moedas_app/app/view_base_currency/base_currency_view.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../res/strings.dart';
+import '../../res/strings.dart';
 import '../components/buttons/button_outlined.dart';
 
 class EmptyView extends StatelessWidget {
