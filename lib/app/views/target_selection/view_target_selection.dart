@@ -1,11 +1,12 @@
 import 'package:cotadacao_moedas_app/app/components/buttons/button_full.dart';
 import 'package:cotadacao_moedas_app/app/components/texts/text_target.dart';
-import 'package:cotadacao_moedas_app/app/view_target_selection/target_presenter.dart';
+import 'package:cotadacao_moedas_app/app/views/target_selection/target_presenter.dart';
 import 'package:flutter/material.dart';
 
-import '../../res/our_colors.dart';
-import '../components/headers/header_new_exchange.dart';
-import '../components/indicators/page_indicator.dart';
+import '../../../res/our_colors.dart';
+import '../../components/headers/header_new_exchange.dart';
+import '../../components/indicators/page_indicator.dart';
+
 
 class TargetSelectionView extends StatefulWidget {
   const TargetSelectionView({

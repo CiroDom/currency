@@ -1,5 +1,5 @@
-import 'package:cotadacao_moedas_app/app/view_empty/empty_presenter.dart';
-import 'package:cotadacao_moedas_app/app/view_empty/empty_view.dart';
+import 'package:cotadacao_moedas_app/app/empty/empty_presenter.dart';
+import 'package:cotadacao_moedas_app/app/empty/empty_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';

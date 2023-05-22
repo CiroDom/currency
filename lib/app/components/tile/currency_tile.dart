@@ -1,10 +1,10 @@
 import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
-import 'package:cotadacao_moedas_app/app/view_base_selection/base_indicator.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/decorartions.dart';
 import '../../../res/styles.dart';
+import '../../views/base_selection/base_indicator.dart';
 
 class CurrencyTile extends StatefulWidget {
   const CurrencyTile({

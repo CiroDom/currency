@@ -1,13 +1,13 @@
 import 'package:cotadacao_moedas_app/app/components/tile/currency_tile.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
-import 'package:cotadacao_moedas_app/app/view_base_selection/base_indicator.dart';
-import 'package:cotadacao_moedas_app/app/view_target_selection/target_indicator.dart';
-import 'package:cotadacao_moedas_app/app/view_target_selection/target_presenter.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import '../../res/strings.dart';
-import '../view_target_selection/view_target_selection.dart';
+import '../target_selection/view_target_selection.dart';
+import '../views/base_selection/base_indicator.dart';
+import '../views/target_selection/target_indicator.dart';
+import '../views/target_selection/target_presenter.dart';
 
 class BasePresenter {
   BasePresenter(this._baseIndicator);
