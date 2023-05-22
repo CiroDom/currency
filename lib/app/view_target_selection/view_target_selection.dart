@@ -1,6 +1,5 @@
 import 'package:cotadacao_moedas_app/app/components/buttons/button_full.dart';
 import 'package:cotadacao_moedas_app/app/components/texts/text_target.dart';
-import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
 import 'package:cotadacao_moedas_app/app/view_target_selection/target_presenter.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +12,10 @@ class TargetSelectionView extends StatefulWidget {
     super.key,
     required this.selectedIndex,
     required this.presenter,
-    required this.indicator,
   });
 
   final int selectedIndex;
   final TargetPresenter presenter;
-  final SelectionIndicator indicator;
 
   @override
   State<TargetSelectionView> createState() => _TargetSelectionViewState();

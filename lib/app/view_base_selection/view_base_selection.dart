@@ -18,8 +18,6 @@ class BaseSelectionView extends StatefulWidget {
 }
 
 class _BaseSelectionViewState extends State<BaseSelectionView> {
-  final basePresenter = BasePresenter();
-
   @override
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
@@ -54,9 +52,9 @@ class _BaseSelectionViewState extends State<BaseSelectionView> {
                 ),
                 Expanded(
                   child: ListView.separated(
-                    itemCount: basePresenter.listLenght,
+                    itemCount: widget.presenter.listLenght,
                     itemBuilder: (context, index) =>
-                        basePresenter.getCurrencyTile(index),
+                        widget.presenter.getCurrencyTile(index),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10.0),
                   ),

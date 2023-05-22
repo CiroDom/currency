@@ -1,5 +1,3 @@
-import 'package:cotadacao_moedas_app/app/view_base_selection/base_presenter.dart';
-import 'package:cotadacao_moedas_app/app/view_base_selection/view_base_selection.dart';
 import 'package:cotadacao_moedas_app/app/view_empty/empty_presenter.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/styles.dart';
@@ -41,7 +39,7 @@ class EmptyView extends StatelessWidget {
                 height: 12,
               ),
               ButtonOutlined(
-                buttonFunction: () => presenter.goToBaseCurrency(context, BasePresenter()),
+                buttonFunction: () => presenter.goToBaseCurrency(),
               )
             ],
           ),

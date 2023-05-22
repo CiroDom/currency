@@ -10,25 +10,27 @@ import '../../res/strings.dart';
 import '../view_target_selection/view_target_selection.dart';
 
 class BasePresenter {
-  final BaseIndicator baseIndicator = BaseIndicator();
+  BasePresenter(this._baseIndicator);
+
+  final BaseIndicator _baseIndicator;
+
   final int listLenght = AbbrCurrency.values.length;
+
 
   void goBackToEmptyView(BuildContext context) {
     Navigator.of(context).pop();
   }
 
   void goToTargetView(int selectedIndex,) {
-    final presenter = TargetPresenter();
     final indicator = TargetIndicator();
-
-    print('GoToTarget');
+    final presenter = TargetPresenter(indicator);
     
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
       MaterialPageRoute(
         builder: (context) => TargetSelectionView(
             selectedIndex: selectedIndex,
             presenter: presenter,
-            indicator: indicator),
+        ),
       ),
     );
   }
@@ -38,8 +40,8 @@ class BasePresenter {
         historic: false,
         mainText: Strings.currencies[index],
         index: index,
-        selectionIndicator: baseIndicator,
-        onTap: (index) => baseIndicator.select(index),
+        selectionIndicator: _baseIndicator,
+        onTap: (index) => _baseIndicator.select(index),
         onDoubleTap: () => goToTargetView(index));
   }
 }
