@@ -1,7 +1,6 @@
 import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
-import 'package:flutter/cupertino.dart';
 
-class BaseIndicator extends ChangeNotifier implements SelectionIndicator {
+class BaseIndicator implements SelectionIndicator {
   final List<int> _selecteds = [0];
 
   @override
@@ -12,16 +11,9 @@ class BaseIndicator extends ChangeNotifier implements SelectionIndicator {
     if (_selecteds.contains(index)) return;
 
     _selecteds[0] = index;
-    notifyListeners();
+    print('index: ${index}');
+    print('selecteds ${_selecteds}');
   }
-
-  @override
-  void addListener(VoidCallback listener) {
-    super.addListener(listener);
-  }
-
-  @override
-  void removeListener(VoidCallback listener);
 
   @override
   void unselect(int index) {

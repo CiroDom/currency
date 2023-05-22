@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../../../res/decorartions.dart';
 import '../../../res/styles.dart';
-import '../../general_classes/enums/abbr_currency.dart';
 
 class CurrencyTile extends StatefulWidget {
   const CurrencyTile({
@@ -32,18 +31,12 @@ class CurrencyTile extends StatefulWidget {
 }
 
 class _CurrencyTileState extends State<CurrencyTile> {
-  bool isSelected = false;
-
-  @override
-  void initState() {
-    super.initState();
-    isSelected = widget.selectionIndicator != null &&
-        widget.selectionIndicator!.getSelecteds.contains(widget.index);
-  }
-
   @override
   Widget build(BuildContext context) {
     print('CurrencyTile rebuilt index: ${widget.index}');
+
+    bool isSelected = widget.selectionIndicator != null &&
+        widget.selectionIndicator!.getSelecteds.contains(widget.index);
 
     return SizedBox(
       height: 72,
