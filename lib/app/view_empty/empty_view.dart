@@ -1,4 +1,6 @@
-import 'package:cotadacao_moedas_app/app/view_base_currency/base_currency_view.dart';
+import 'package:cotadacao_moedas_app/app/view_base_selection/base_presenter.dart';
+import 'package:cotadacao_moedas_app/app/view_base_selection/view_base_selection.dart';
+import 'package:cotadacao_moedas_app/app/view_empty/empty_presenter.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/styles.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +9,13 @@ import '../../res/strings.dart';
 import '../components/buttons/button_outlined.dart';
 
 class EmptyView extends StatelessWidget {
-  const EmptyView({super.key});
+  const EmptyView({super.key, required this.presenter});
+
+  final EmptyPresenter presenter;
+
 
   @override
   Widget build(BuildContext context) {
-    void goToBaseCurrencyView() {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => BaseCurrencyView()));
-    }
-
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: AppBar(
@@ -41,7 +41,7 @@ class EmptyView extends StatelessWidget {
                 height: 12,
               ),
               ButtonOutlined(
-                buttonFunction: goToBaseCurrencyView,
+                buttonFunction: () => presenter.goToBaseCurrency(context, BasePresenter()),
               )
             ],
           ),

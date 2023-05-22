@@ -6,7 +6,7 @@ import '../../../../res/styles.dart';
 class TextTarget extends StatelessWidget {
   const TextTarget({super.key, required this.base});
 
-  final String base;
+  final int base;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class TextTarget extends StatelessWidget {
               ),
               TextSpan(
                 style: Styles.textNextHeaderBold,
-                text: '\n$base',
+                text: '\n${Strings.currencies[base]}',
               ),
             ]
           ),

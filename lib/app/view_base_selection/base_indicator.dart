@@ -1,6 +1,7 @@
 import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
+import 'package:flutter/material.dart';
 
-class BaseIndicator implements SelectionIndicator {
+class BaseIndicator extends SelectionIndicator {
   final List<int> _selecteds = [0];
 
   @override
@@ -12,7 +13,7 @@ class BaseIndicator implements SelectionIndicator {
 
     _selecteds[0] = index;
     print('index: ${index}');
-    print('selecteds ${_selecteds}');
+    print('selecteds ${getSelecteds}');
   }
 
   @override

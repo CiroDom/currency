@@ -1,28 +1,33 @@
-import 'package:cotadacao_moedas_app/app/view_base_currency/base_presenter.dart';
+import 'package:cotadacao_moedas_app/app/components/buttons/button_full.dart';
+import 'package:cotadacao_moedas_app/app/components/texts/text_target.dart';
+import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
+import 'package:cotadacao_moedas_app/app/view_target_selection/target_presenter.dart';
 import 'package:flutter/material.dart';
 
 import '../../res/our_colors.dart';
 import '../components/headers/header_new_exchange.dart';
 import '../components/indicators/page_indicator.dart';
-import '../components/texts/text_base.dart';
 
-class BaseCurrencyView extends StatefulWidget {
-  const BaseCurrencyView({super.key});
+class TargetSelectionView extends StatefulWidget {
+  const TargetSelectionView({
+    super.key,
+    required this.selectedIndex,
+    required this.presenter,
+    required this.indicator,
+  });
+
+  final int selectedIndex;
+  final TargetPresenter presenter;
+  final SelectionIndicator indicator;
 
   @override
-  State<BaseCurrencyView> createState() => _BaseCurrencyViewState();
+  State<TargetSelectionView> createState() => _TargetSelectionViewState();
 }
 
-class _BaseCurrencyViewState extends State<BaseCurrencyView> {
+class _TargetSelectionViewState extends State<TargetSelectionView> {
   @override
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
-
-    void goBackToEmptyView() {
-      Navigator.of(context).pop();
-    }
-
-    final basePresenter = BasePresenter();
 
     return Scaffold(
       backgroundColor: OurColors.body,
@@ -35,7 +40,7 @@ class _BaseCurrencyViewState extends State<BaseCurrencyView> {
             Icons.close,
             color: OurColors.primary,
           ),
-          onPressed: goBackToEmptyView,
+          onPressed: () => widget.presenter.goBackToEmptyView(context),
         ),
       ),
       body: Padding(
@@ -48,24 +53,28 @@ class _BaseCurrencyViewState extends State<BaseCurrencyView> {
               children: [
                 const HeaderNewExchange(),
                 const SizedBox(height: 20.0),
-                const TextBase(),
+                TextTarget(base: widget.selectedIndex),
                 const SizedBox(
                   height: 20.0,
                 ),
                 Expanded(
                   child: ListView.separated(
-                    itemCount: basePresenter.listLenght,
-                    itemBuilder: (context, index) => basePresenter.getCurrencyTile(index),
+                    itemCount: widget.presenter.listLenght,
+                    itemBuilder: (context, index) =>
+                        widget.presenter.getCurrencyTile(index),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10.0),
                   ),
                 ),
               ],
             ),
-            const Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [PageIndicator(isBaseCurrencyView: true)],
+              children: [
+                const PageIndicator(isBaseCurrencyView: false),
+                ButtonFull(buttonFunction: widget.presenter.goToExchangeView, isOn: false)
+              ],
             ),
           ],
         ),

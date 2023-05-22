@@ -1,5 +1,5 @@
 import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
-import 'package:cotadacao_moedas_app/app/view_base_currency/base_indicator.dart';
+import 'package:cotadacao_moedas_app/app/view_base_selection/base_indicator.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -33,15 +33,18 @@ class CurrencyTile extends StatefulWidget {
 class _CurrencyTileState extends State<CurrencyTile> {
   @override
   Widget build(BuildContext context) {
-    print('CurrencyTile rebuilt index: ${widget.index}');
-
     bool isSelected = widget.selectionIndicator != null &&
         widget.selectionIndicator!.getSelecteds.contains(widget.index);
 
     return SizedBox(
       height: 72,
       child: GestureDetector(
-        onTap: widget.historic ? null : () => widget.onTap(widget.index),
+        onTap: widget.historic
+            ? null
+            : () {
+                widget.onTap(widget.index);
+                print('Tile ${widget.index}: $isSelected');
+              },
         onDoubleTap: widget.selectionIndicator is BaseIndicator
             ? widget.onDoubleTap
             : null,

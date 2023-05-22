@@ -10,11 +10,12 @@ class PageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     const double side = 20.0;
     const double spaceBetween = 5.0;
-    const double paddBottom = 14.0;
+    const double paddBottom = 30.0;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: paddBottom),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
             width: side,

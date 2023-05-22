@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-abstract class SelectionIndicator {
+abstract class SelectionIndicator extends ChangeNotifier {
   List<int> get getSelecteds;
   void select(int index);
   void unselect(int index);
