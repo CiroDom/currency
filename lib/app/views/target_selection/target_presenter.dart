@@ -1,3 +1,4 @@
+import 'package:cotadacao_moedas_app/app/views/exchanges/exchange_presenter.dart';
 import 'package:cotadacao_moedas_app/app/views/target_selection/target_indicator.dart';
 import 'package:cotadacao_moedas_app/main.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,11 @@ class TargetPresenter {
   }
 
   void goToExchangeView() {
+    final presenter = ExchangePresenter(
+        baseIndex: baseIndex,
+        selectedsCurrencies: selectedsCurrencies,
+        repository: repository);
+
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
       MaterialPageRoute(builder: (context) => const ExchangeView()),
     );
@@ -30,7 +36,7 @@ class TargetPresenter {
         mainText: Strings.currencies[index],
         index: index,
         selectionIndicator: _indicator,
-        onTap: (index) => _indicator.select(index),
+        onTap: (index) => _indicator.selectOrUnselect(index),
         onDoubleTap: () => goToExchangeView);
   }
 }
