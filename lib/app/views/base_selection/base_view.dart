@@ -1,27 +1,24 @@
-import 'package:cotadacao_moedas_app/app/components/buttons/button_full.dart';
-import 'package:cotadacao_moedas_app/app/components/texts/text_target.dart';
 import 'package:flutter/material.dart';
 
-import '../../res/our_colors.dart';
-import '../components/headers/header_new_exchange.dart';
-import '../components/indicators/page_indicator.dart';
-import '../views/target_selection/target_presenter.dart';
+import '../../../res/our_colors.dart';
+import '../../components/headers/header_new_exchange.dart';
+import '../../components/indicators/page_indicator.dart';
+import '../../components/texts/text_base.dart';
+import 'base_presenter.dart';
 
-class TargetSelectionView extends StatefulWidget {
-  const TargetSelectionView({
+class BaseView extends StatefulWidget {
+  const BaseView({
     super.key,
-    required this.selectedIndex,
     required this.presenter,
   });
 
-  final int selectedIndex;
-  final TargetPresenter presenter;
+  final BasePresenter presenter;
 
   @override
-  State<TargetSelectionView> createState() => _TargetSelectionViewState();
+  State<BaseView> createState() => _BaseViewState();
 }
 
-class _TargetSelectionViewState extends State<TargetSelectionView> {
+class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
@@ -50,7 +47,7 @@ class _TargetSelectionViewState extends State<TargetSelectionView> {
               children: [
                 const HeaderNewExchange(),
                 const SizedBox(height: 20.0),
-                TextTarget(base: widget.selectedIndex),
+                const TextBase(),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -65,13 +62,10 @@ class _TargetSelectionViewState extends State<TargetSelectionView> {
                 ),
               ],
             ),
-            Column(
+            const Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const PageIndicator(isBaseCurrencyView: false),
-                ButtonFull(buttonFunction: widget.presenter.goToExchangeView, isOn: false)
-              ],
+              children: [PageIndicator(isBaseCurrencyView: true)],
             ),
           ],
         ),

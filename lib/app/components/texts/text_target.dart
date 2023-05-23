@@ -4,9 +4,9 @@ import '../../../../res/strings.dart';
 import '../../../../res/styles.dart';
 
 class TextTarget extends StatelessWidget {
-  const TextTarget({super.key, required this.base});
+  const TextTarget({super.key, required this.currencyName});
 
-  final int base;
+  final String currencyName;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class TextTarget extends StatelessWidget {
               ),
               TextSpan(
                 style: Styles.textNextHeaderBold,
-                text: '\n${Strings.currencies[base]}',
+                text: '\n$currencyName',
               ),
             ]
           ),

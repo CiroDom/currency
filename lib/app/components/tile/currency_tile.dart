@@ -1,16 +1,13 @@
-import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/decorartions.dart';
 import '../../../res/styles.dart';
-import '../../views/base_selection/base_indicator.dart';
 
 class CurrencyTile extends StatefulWidget {
   const CurrencyTile({
     super.key,
     required this.historic,
-    this.selectionIndicator,
     required this.mainText,
     required this.index,
     required this.onTap,
@@ -19,7 +16,6 @@ class CurrencyTile extends StatefulWidget {
   });
 
   final bool historic;
-  final SelectionIndicator? selectionIndicator;
   final String mainText;
   final int index;
   final String? price;
@@ -33,8 +29,7 @@ class CurrencyTile extends StatefulWidget {
 class _CurrencyTileState extends State<CurrencyTile> {
   @override
   Widget build(BuildContext context) {
-    bool isSelected = widget.selectionIndicator != null &&
-        widget.selectionIndicator!.getSelecteds.contains(widget.index);
+    bool isSelected = false;
 
     return SizedBox(
       height: 72,
@@ -45,9 +40,7 @@ class _CurrencyTileState extends State<CurrencyTile> {
                 widget.onTap(widget.index);
                 print('Tile ${widget.index}: $isSelected');
               },
-        onDoubleTap: widget.selectionIndicator is BaseIndicator
-            ? widget.onDoubleTap
-            : null,
+        onDoubleTap: widget.onDoubleTap,
         child: AnimatedContainer(
           decoration: isSelected
               ? Decorations.selectedCurrencyTile

@@ -1,7 +1,7 @@
-import 'package:cotadacao_moedas_app/app/empty/empty_presenter.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
+import '../views/empty/empty_presenter.dart';
 import '../views/empty/view_empty.dart';
 
 class CurrencyApp extends StatelessWidget {

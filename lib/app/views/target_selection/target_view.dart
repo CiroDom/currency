@@ -7,22 +7,19 @@ import '../../../res/our_colors.dart';
 import '../../components/headers/header_new_exchange.dart';
 import '../../components/indicators/page_indicator.dart';
 
-
-class TargetSelectionView extends StatefulWidget {
-  const TargetSelectionView({
+class TargetView extends StatefulWidget {
+  const TargetView({
     super.key,
-    required this.selectedIndex,
     required this.presenter,
   });
 
-  final int selectedIndex;
   final TargetPresenter presenter;
 
   @override
-  State<TargetSelectionView> createState() => _TargetSelectionViewState();
+  State<TargetView> createState() => _TargetViewState();
 }
 
-class _TargetSelectionViewState extends State<TargetSelectionView> {
+class _TargetViewState extends State<TargetView> {
   @override
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
@@ -51,7 +48,7 @@ class _TargetSelectionViewState extends State<TargetSelectionView> {
               children: [
                 const HeaderNewExchange(),
                 const SizedBox(height: 20.0),
-                TextTarget(base: widget.selectedIndex),
+                TextTarget(currencyName: widget.presenter.getbaseText()),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -71,7 +68,9 @@ class _TargetSelectionViewState extends State<TargetSelectionView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const PageIndicator(isBaseCurrencyView: false),
-                ButtonFull(buttonFunction: widget.presenter.goToExchangeView, isOn: false)
+                ButtonFull(
+                    buttonFunction: widget.presenter.goToExchangeView,
+                    isOn: false)
               ],
             ),
           ],

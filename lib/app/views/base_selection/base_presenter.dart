@@ -4,32 +4,35 @@ import 'package:flutter/material.dart';
 
 import '../../../main.dart';
 import '../../../res/strings.dart';
-import '../target_selection/target_indicator.dart';
 import '../target_selection/target_presenter.dart';
-import '../target_selection/view_target_selection.dart';
-import 'base_indicator.dart';
+import '../target_selection/target_view.dart';
 
 class BasePresenter {
-  BasePresenter(this._baseIndicator);
+  BasePresenter();
 
-  final BaseIndicator _baseIndicator;
-
+  int _selected = 0;
+  int get getSelected => _selected;
   final int listLenght = AbbrCurrency.values.length;
 
+  void select(int index) {
+    if (_selected == index) return;
+
+    _selected = index;
+    print('index: ${index}');
+    print('selecteds ${getSelected}');
+  }
 
   void goBackToEmptyView(BuildContext context) {
     Navigator.of(context).pop();
   }
 
-  void goToTargetView(int selectedIndex,) {
-    final indicator = TargetIndicator();
-    final presenter = TargetPresenter(indicator);
-    
+  void goToTargetView(int selectedIndex) {
+    final presenter = TargetPresenter(_selected);
+
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => TargetSelectionView(
-            selectedIndex: selectedIndex,
-            presenter: presenter,
+        builder: (context) => TargetView(
+          presenter: presenter,
         ),
       ),
     );
@@ -40,8 +43,7 @@ class BasePresenter {
         historic: false,
         mainText: Strings.currencies[index],
         index: index,
-        selectionIndicator: _baseIndicator,
-        onTap: (index) => _baseIndicator.select(index),
+        onTap: (index) => select(index),
         onDoubleTap: () => goToTargetView(index));
   }
 }
