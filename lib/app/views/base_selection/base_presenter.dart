@@ -1,9 +1,8 @@
-import 'package:cotadacao_moedas_app/app/components/tile/currency_tile.dart';
+import 'package:cotadacao_moedas_app/app/components/tile/our_tile.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
 import 'package:flutter/material.dart';
 
 import '../../../main.dart';
-import '../../../res/strings.dart';
 import '../target_selection/target_presenter.dart';
 import '../target_selection/target_view.dart';
 
@@ -38,10 +37,10 @@ class BasePresenter {
     );
   }
 
-  CurrencyTile getCurrencyTile(int index) {
-    return CurrencyTile(
+  OurTile buildOurTile(int index) {
+    return OurTile(
         historic: false,
-        mainText: Strings.currencies[index],
+        mainText: AbbrCurrency.values[index].name,
         index: index,
         onTap: (index) => select(index),
         onDoubleTap: () => goToTargetView(index));

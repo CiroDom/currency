@@ -6,14 +6,6 @@ class Strings {
 
   static const appBarTitle = 'Cubos Currency';
 
-  static const currencies = [
-    'real',
-    'dólar americano',
-    'libra esterlina',
-    'dólar australiano',
-    'euro',
-  ];
-
   static const newExchangeHeader = 'Novo acompanhamento';
   static const historicExchangeHeader = 'Histórico de preços';
 
@@ -21,4 +13,6 @@ class Strings {
   static const textTarget = 'Selecione as moedas a serem cotadas em';
   static const textExchange = 'Confira os valores de compra referentes à moeda';
   static const textHistoric = 'Fechamento dos valores de compra da\nmoeda ';
+
+  static const error = 'Houve um erro na obtenção dos dados';
 }

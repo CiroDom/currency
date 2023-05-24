@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../res/decorartions.dart';
 import '../../../res/styles.dart';
 
-class CurrencyTile extends StatefulWidget {
-  const CurrencyTile({
+class OurTile extends StatefulWidget {
+  const OurTile({
     super.key,
     required this.historic,
     required this.mainText,
@@ -18,15 +18,15 @@ class CurrencyTile extends StatefulWidget {
   final bool historic;
   final String mainText;
   final int index;
-  final String? price;
+  final double? price;
   final void Function(int) onTap;
   final void Function()? onDoubleTap;
 
   @override
-  State<CurrencyTile> createState() => _CurrencyTileState();
+  State<OurTile> createState() => _OurTileState();
 }
 
-class _CurrencyTileState extends State<CurrencyTile> {
+class _OurTileState extends State<OurTile> {
   @override
   Widget build(BuildContext context) {
     bool isSelected = false;

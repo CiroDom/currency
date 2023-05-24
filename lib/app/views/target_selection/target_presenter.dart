@@ -3,8 +3,7 @@ import 'package:cotadacao_moedas_app/app/views/exchanges/exchange_presenter.dart
 import 'package:cotadacao_moedas_app/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../../res/strings.dart';
-import '../../components/tile/currency_tile.dart';
+import '../../components/tile/our_tile.dart';
 import '../../general_classes/enums/abbr_currency.dart';
 import '../exchanges/exchange_view.dart';
 
@@ -16,7 +15,7 @@ class TargetPresenter {
   final List<int> _selecteds = [];
   final int listLenght = AbbrCurrency.values.length;
 
-  String getbaseText() => Strings.currencies[base];
+  String getbaseText() => AbbrCurrency.values[base].name;
 
   List<int> get selecteds => _selecteds;
 
@@ -39,14 +38,17 @@ class TargetPresenter {
         repository: CurrencyRepo());
 
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
-      MaterialPageRoute(builder: (context) => ExchangeView(presenter: presenter,)),
+      MaterialPageRoute(
+          builder: (context) => ExchangeView(
+                presenter: presenter,
+              )),
     );
   }
 
-  CurrencyTile getCurrencyTile(int index) {
-    return CurrencyTile(
+  OurTile buildOurTile(int index) {
+    return OurTile(
         historic: false,
-        mainText: Strings.currencies[index],
+        mainText: AbbrCurrency.values[index].name,
         index: index,
         onTap: (index) => selectOrUnselect(index),
         onDoubleTap: () => goToExchangeView);

@@ -55,7 +55,7 @@ class _BaseViewState extends State<BaseView> {
                   child: ListView.separated(
                     itemCount: widget.presenter.listLenght,
                     itemBuilder: (context, index) =>
-                        widget.presenter.getCurrencyTile(index),
+                        widget.presenter.buildOurTile(index),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10.0),
                   ),
