@@ -1,24 +1,25 @@
 import 'package:cotadacao_moedas_app/app/components/tile/our_tile.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
+import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../main.dart';
 import '../target_selection/target_presenter.dart';
 import '../target_selection/target_view.dart';
 
-class BasePresenter {
+class BasePresenter extends ChangeNotifier implements SelectionIndicator {
   BasePresenter();
 
-  int _selected = 0;
-  int get getSelected => _selected;
+  final List<int> _selected = [0];
+  @override
+  List<int> get getSelecteds => _selected;
   final int listLenght = AbbrCurrency.values.length;
 
   void select(int index) {
-    if (_selected == index) return;
+    if (_selected.contains(index)) return;
 
-    _selected = index;
-    print('index: ${index}');
-    print('selecteds ${getSelected}');
+    _selected[0] = index;
+    notifyListeners();
   }
 
   void goBackToEmptyView(BuildContext context) {
@@ -26,7 +27,9 @@ class BasePresenter {
   }
 
   void goToTargetView(int selectedIndex) {
-    final presenter = TargetPresenter(_selected);
+    if (!_selected.contains(selectedIndex)) return;
+
+    final presenter = TargetPresenter(_selected[0]);
 
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
       MaterialPageRoute(
@@ -37,12 +40,13 @@ class BasePresenter {
     );
   }
 
-  OurTile buildOurTile(int index) {
+  OurTile buildOurTile(int index, SelectionIndicator presenter) {
     return OurTile(
         historic: false,
         mainText: AbbrCurrency.values[index].name,
         index: index,
+        presenter: presenter,
         onTap: (index) => select(index),
-        onDoubleTap: () => goToTargetView(index));
+        nextStep: () => goToTargetView(index));
   }
 }

@@ -11,7 +11,7 @@ class Exchange {
   final Currency to;
   late double _ratio;
   
-  double get price => _ratio = (to.price / from.price);
+  double get price => _ratio = (double.parse(to.price) / double.parse(from.price));
 
   HowExpansive get howExpansive {
     if (_ratio < 1) {

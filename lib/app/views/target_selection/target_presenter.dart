@@ -1,4 +1,5 @@
 import 'package:cotadacao_moedas_app/app/general_classes/repos/currency_repo.dart';
+import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
 import 'package:cotadacao_moedas_app/app/views/exchanges/exchange_presenter.dart';
 import 'package:cotadacao_moedas_app/main.dart';
 import 'package:flutter/material.dart';
@@ -7,17 +8,17 @@ import '../../components/tile/our_tile.dart';
 import '../../general_classes/enums/abbr_currency.dart';
 import '../exchanges/exchange_view.dart';
 
-class TargetPresenter {
+class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
   TargetPresenter(this.base);
 
   final int base;
 
   final List<int> _selecteds = [];
+  @override
+  List<int> get getSelecteds => _selecteds;
   final int listLenght = AbbrCurrency.values.length;
 
   String getbaseText() => AbbrCurrency.values[base].name;
-
-  List<int> get selecteds => _selecteds;
 
   void selectOrUnselect(int index) {
     if (_selecteds.contains(index)) {
@@ -25,6 +26,8 @@ class TargetPresenter {
     } else {
       _selecteds.add(index);
     }
+
+    notifyListeners();
   }
 
   void goBackToEmptyView(BuildContext context) {
@@ -32,9 +35,11 @@ class TargetPresenter {
   }
 
   void goToExchangeView() {
+    if (_selecteds.isEmpty) return;
+
     final presenter = ExchangePresenter(
         baseIndex: base,
-        selectedsCurrencies: selecteds,
+        targetsIndexes: getSelecteds,
         repository: CurrencyRepo());
 
     Navigator.of(navigatorKey.currentContext!).pushReplacement(
@@ -51,6 +56,6 @@ class TargetPresenter {
         mainText: AbbrCurrency.values[index].name,
         index: index,
         onTap: (index) => selectOrUnselect(index),
-        onDoubleTap: () => goToExchangeView);
+        nextStep: goToExchangeView);
   }
 }

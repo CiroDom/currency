@@ -23,6 +23,12 @@ class _BaseViewState extends State<BaseView> {
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
 
+    initState() {
+      widget.presenter.addListener(() {
+        setState(() {});
+      });
+    }
+
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: AppBar(
@@ -55,7 +61,7 @@ class _BaseViewState extends State<BaseView> {
                   child: ListView.separated(
                     itemCount: widget.presenter.listLenght,
                     itemBuilder: (context, index) =>
-                        widget.presenter.buildOurTile(index),
+                        widget.presenter.buildOurTile(index, widget.presenter),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 10.0),
                   ),

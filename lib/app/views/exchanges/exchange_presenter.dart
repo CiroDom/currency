@@ -13,12 +13,12 @@ import '../../components/tile/our_tile.dart';
 class ExchangePresenter {
   ExchangePresenter({
     required this.baseIndex,
-    required this.selectedsCurrencies,
+    required this.targetsIndexes,
     required this.repository,
   });
 
   final int baseIndex;
-  final List<int> selectedsCurrencies;
+  final List<int> targetsIndexes;
   final CurrencyRepo repository;
 
   void goToHistoric() {}
@@ -28,14 +28,13 @@ class ExchangePresenter {
   Future<Currency> getBaseCurrency() async {
     final baseAbbr = AbbrCurrency.values[baseIndex];
     final baseCurrency = await repository.getCurrency(baseAbbr);
-
     return baseCurrency;
   }
 
   Future<List<Currency>> getSelectedsList() async {
     final List<Currency> targets = [];
 
-    for (int i in selectedsCurrencies) {
+    for (int i in targetsIndexes) {
       final targetAbbr = AbbrCurrency.values[i];
       final targetCurrency = await repository.getCurrency(targetAbbr);
       targets.add(targetCurrency);
@@ -69,8 +68,8 @@ class ExchangePresenter {
             ),
           );
         } else if (snapshot.hasError) {
-          return const Text(
-            Strings.error,
+          return Text(
+            '${Strings.error}: ${snapshot.error}',
             style: Styles.textNextHeaderBold,
           );
         } else {
@@ -82,7 +81,7 @@ class ExchangePresenter {
             mainText: exchange.to.abbr.name,
             index: index,
             onTap: (index) => goToHistoric(),
-            onDoubleTap: () {},
+            nextStep: () {},
             price: exchange.price,
           );
         }

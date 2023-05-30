@@ -29,7 +29,7 @@ class ExchangeView extends StatelessWidget {
             const SizedBox(height: 20.0),
             Expanded(
               child: ListView.separated(
-                itemCount: presenter.selectedsCurrencies.length,
+                itemCount: presenter.targetsIndexes.length,
                 itemBuilder: (context, index) =>
                     presenter.buildOurTileOrNot(index),
                 separatorBuilder: (context, index) =>

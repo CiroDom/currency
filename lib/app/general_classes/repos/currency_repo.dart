@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 
 import '../currency.dart';
@@ -5,16 +7,25 @@ import '../enums/abbr_currency.dart';
 
 class CurrencyRepo {
   final _dio = Dio(
-    BaseOptions(baseUrl: 'https://economia.awesomeapi.com.br/last'),
+    BaseOptions(baseUrl: 'https://economia.awesomeapi.com.br'),
   );
 
-  Future<double> getPrice(AbbrCurrency abbr) async {
-    final abbrCapsLock = abbr.toString().toUpperCase();
+  Future<String> getPrice(AbbrCurrency abbr) async {
+    final abbrCapsLock = abbr.toString().split('.').last.toUpperCase();
 
-    final response = await _dio.get('/$abbrCapsLock-BRL');
-    final price = response.data['bid'];
+    if (abbr == AbbrCurrency.brl) {
+      final String price = '1.000';
 
-    return price;
+      return price;
+    }
+
+    else {
+      final response = await _dio.get('/json/last/$abbrCapsLock-BRL/');
+      final responseObj = response.data[abbrCapsLock + 'BRL'];
+      final price = responseObj['bid'];
+
+      return price;
+    }
   }
 
   Future<Currency> getCurrency(AbbrCurrency abbr) async {

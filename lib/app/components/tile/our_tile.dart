@@ -1,3 +1,4 @@
+import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -10,26 +11,32 @@ class OurTile extends StatefulWidget {
     required this.historic,
     required this.mainText,
     required this.index,
+    this.presenter,
     required this.onTap,
-    this.onDoubleTap,
+    this.nextStep,
     this.price,
   });
 
   final bool historic;
   final String mainText;
   final int index;
+  final SelectionIndicator? presenter;
   final double? price;
   final void Function(int) onTap;
-  final void Function()? onDoubleTap;
+  final void Function()? nextStep;
 
   @override
   State<OurTile> createState() => _OurTileState();
 }
 
 class _OurTileState extends State<OurTile> {
+    
   @override
   Widget build(BuildContext context) {
-    bool isSelected = false;
+    final priceColor;
+1
+    bool isSelected = widget.presenter != null &&
+        widget.presenter!.getSelecteds.contains(widget.index);
 
     return SizedBox(
       height: 72,
@@ -40,7 +47,7 @@ class _OurTileState extends State<OurTile> {
                 widget.onTap(widget.index);
                 print('Tile ${widget.index}: $isSelected');
               },
-        onDoubleTap: widget.onDoubleTap,
+        onDoubleTap: widget.nextStep,
         child: AnimatedContainer(
           decoration: isSelected
               ? Decorations.selectedCurrencyTile
@@ -49,36 +56,48 @@ class _OurTileState extends State<OurTile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Stack(
                 children: [
-                  const SizedBox(
-                    width: 18,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        width: 18,
+                      ),
+                      widget.historic
+                          ? const Icon(
+                              Icons.calendar_month_rounded,
+                              color: OurColors.text1,
+                            )
+                          : Icon(
+                              Icons.attach_money,
+                              color:
+                                  isSelected ? OurColors.primary : OurColors.text1,
+                            ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        widget.mainText,
+                        style: isSelected
+                            ? Styles.currencyBtnSelected
+                            : Styles.currencyBtnUnselected,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          widget.price != null
+                              ? Text(
+                                  widget.price!.toString(),
+                                  style: TextStyle(
+                                    color: 
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
+                      )
+                    ],
                   ),
-                  widget.historic
-                      ? const Icon(
-                          Icons.calendar_month_rounded,
-                          color: OurColors.text1,
-                        )
-                      : Icon(
-                          Icons.attach_money,
-                          color:
-                              isSelected ? OurColors.primary : OurColors.text1,
-                        ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    widget.mainText,
-                    style: isSelected
-                        ? Styles.currencyBtnSelected
-                        : Styles.currencyBtnUnselected,
-                  ),
-                  widget.price != null
-                      ? Text(
-                          widget.price.toString(),
-                        )
-                      : const SizedBox()
                 ],
               )
             ],

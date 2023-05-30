@@ -7,5 +7,5 @@ class Currency {
   );
 
   final AbbrCurrency abbr;
-  final double price;
+  final String price;
 }

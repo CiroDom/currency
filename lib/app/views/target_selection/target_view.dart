@@ -24,6 +24,12 @@ class _TargetViewState extends State<TargetView> {
   Widget build(BuildContext context) {
     const double paddHori = 16.0;
 
+    initState() {
+      widget.presenter.addListener(() {
+        setState(() {});
+      });
+    }
+
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: AppBar(
