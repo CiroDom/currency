@@ -2,7 +2,7 @@ import 'package:cotadacao_moedas_app/app/components/indicators/snake_progress_in
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/repos/currency_repo.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/repos/historic_repo.dart';
-import 'package:cotadacao_moedas_app/app/views/historic/historic_view.dart';
+import 'package:cotadacao_moedas_app/app/views_and_presenters/historic/historic_view.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 

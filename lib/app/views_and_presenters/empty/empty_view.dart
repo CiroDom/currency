@@ -1,6 +1,7 @@
 import 'package:cotadacao_moedas_app/app/components/app_bars/title_app_bar.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:cotadacao_moedas_app/res/our_styles.dart';
+import 'package:cotadacao_moedas_app/res/our_values.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/our_strings.dart';
@@ -29,7 +30,7 @@ class EmptyView extends StatelessWidget {
                 style: OurStyles.textEmptyViewAndHistoric,
               ),
               const SizedBox(
-                height: 12,
+                height: OurValues.midDistance,
               ),
               ButtonOutlined(
                 buttonFunction: () => presenter.goToBaseCurrency(),

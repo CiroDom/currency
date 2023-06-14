@@ -1,4 +1,5 @@
 import 'package:cotadacao_moedas_app/app/components/app_bars/no_title_app_bar.dart';
+import 'package:cotadacao_moedas_app/res/our_values.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/our_colors.dart';
@@ -22,20 +23,12 @@ class BaseView extends StatefulWidget {
 class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
-    const double paddHori = 16.0;
-
-    initState() {
-      widget.presenter.addListener(() {
-        setState(() {});
-      });
-    }
-
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: NoTitleAppBar(
         buttonFunction: () => widget.presenter.goBackToEmptyView(context)),
       body: Padding(
-        padding: const EdgeInsets.all(paddHori),
+        padding: const EdgeInsets.all(OurValues.padd),
         child: Stack(
           children: [
             Column(
@@ -43,10 +36,10 @@ class _BaseViewState extends State<BaseView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const HeaderNewExchange(),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: OurValues.bigDistance),
                 const TextBase(),
                 const SizedBox(
-                  height: 20.0,
+                  height: OurValues.bigDistance,
                 ),
                 Expanded(
                   child: ListView.separated(
@@ -54,7 +47,7 @@ class _BaseViewState extends State<BaseView> {
                     itemBuilder: (context, index) =>
                         widget.presenter.buildOurTile(index, widget.presenter),
                     separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10.0),
+                        const SizedBox(height: OurValues.smallDistance),
                   ),
                 ),
               ],

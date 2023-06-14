@@ -1,9 +1,10 @@
 import 'package:cotadacao_moedas_app/app/components/buttons/button_full.dart';
 import 'package:cotadacao_moedas_app/app/components/texts/text_target.dart';
-import 'package:cotadacao_moedas_app/app/views/target_selection/target_presenter.dart';
+import 'package:cotadacao_moedas_app/app/views_and_presenters/target_selection/target_presenter.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/our_colors.dart';
+import '../../../res/our_values.dart';
 import '../../components/headers/header_new_exchange.dart';
 import '../../components/indicators/page_indicator.dart';
 
@@ -22,14 +23,6 @@ class TargetView extends StatefulWidget {
 class _TargetViewState extends State<TargetView> {
   @override
   Widget build(BuildContext context) {
-    const double paddHori = 16.0;
-
-    initState() {
-      widget.presenter.addListener(() {
-        setState(() {});
-      });
-    }
-
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: AppBar(
@@ -45,7 +38,7 @@ class _TargetViewState extends State<TargetView> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(paddHori),
+        padding: const EdgeInsets.all(OurValues.padd),
         child: Stack(
           children: [
             Column(
@@ -53,10 +46,10 @@ class _TargetViewState extends State<TargetView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const HeaderNewExchange(),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: OurValues.bigDistance),
                 TextTarget(currencyName: widget.presenter.getbaseText()),
                 const SizedBox(
-                  height: 20.0,
+                  height: OurValues.bigDistance,
                 ),
                 Expanded(
                   child: ListView.separated(
@@ -64,7 +57,7 @@ class _TargetViewState extends State<TargetView> {
                     itemBuilder: (context, index) =>
                         widget.presenter.buildOurTile(index),
                     separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10.0),
+                        const SizedBox(height: OurValues.smallDistance),
                   ),
                 ),
               ],

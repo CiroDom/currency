@@ -1,6 +1,6 @@
 import 'package:cotadacao_moedas_app/app/general_classes/repos/currency_repo.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/abstract_classes/selection_indicator.dart';
-import 'package:cotadacao_moedas_app/app/views/exchanges/exchanges_presenter.dart';
+import 'package:cotadacao_moedas_app/app/views_and_presenters/exchanges/exchanges_presenter.dart';
 import 'package:cotadacao_moedas_app/main.dart';
 import 'package:flutter/material.dart';
 

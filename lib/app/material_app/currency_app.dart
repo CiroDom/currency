@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
-import '../views/empty/empty_presenter.dart';
-import '../views/empty/empty_view.dart';
+import '../views_and_presenters/empty/empty_presenter.dart';
+import '../views_and_presenters/empty/empty_view.dart';
 
 class CurrencyApp extends StatelessWidget {
   const CurrencyApp({super.key});
