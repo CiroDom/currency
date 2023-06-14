@@ -1,5 +1,5 @@
-import 'package:cotadacao_moedas_app/res/strings.dart';
-import 'package:cotadacao_moedas_app/res/styles.dart';
+import 'package:cotadacao_moedas_app/res/our_strings.dart';
+import 'package:cotadacao_moedas_app/res/our_styles.dart';
 import 'package:flutter/material.dart';
 
 class ButtonFull extends StatelessWidget {
@@ -22,11 +22,11 @@ class ButtonFull extends StatelessWidget {
             width: 220,
             height: 48,
             child: ElevatedButton(
-              style: isOn ? Styles.buttonFullOn : Styles.buttonFullOff,
+              style: isOn ? OurStyles.buttonFullOn : OurStyles.buttonFullOff,
               onPressed: buttonFunction,
               child: const Text(
-                Strings.btnConc,
-                style: Styles.textButtonOutlined,
+                OurStrings.btnConc,
+                style: OurStyles.textButtonOutlined,
               ),
             ),
           ),

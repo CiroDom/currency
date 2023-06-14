@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
-import '../../../../res/styles.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 
 class TextTarget extends StatelessWidget {
   const TextTarget({super.key, required this.currencyName});
@@ -14,18 +14,13 @@ class TextTarget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text.rich(
-          TextSpan(
-            style: Styles.textNextHeader,
-            children: [
-              const TextSpan(
-                text: Strings.textTarget
-              ),
-              TextSpan(
-                style: Styles.textNextHeaderBold,
-                text: '\n$currencyName',
-              ),
-            ]
-          ),
+          TextSpan(style: OurStyles.textNextHeader, children: [
+            const TextSpan(text: OurStrings.textTarget),
+            TextSpan(
+              style: OurStyles.textNextHeaderBold,
+              text: '\n$currencyName',
+            ),
+          ]),
         ),
       ],
     );

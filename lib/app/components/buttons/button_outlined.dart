@@ -1,5 +1,5 @@
-import 'package:cotadacao_moedas_app/res/strings.dart';
-import 'package:cotadacao_moedas_app/res/styles.dart';
+import 'package:cotadacao_moedas_app/res/our_strings.dart';
+import 'package:cotadacao_moedas_app/res/our_styles.dart';
 import 'package:flutter/material.dart';
 
 class ButtonOutlined extends StatelessWidget {
@@ -13,11 +13,11 @@ class ButtonOutlined extends StatelessWidget {
       width: 220,
       height: 48,
       child: OutlinedButton(
-        style: Styles.buttonOutlined,
+        style: OurStyles.buttonOutlined,
         onPressed: buttonFunction,
         child: const Text(
-          Strings.btnBegin,
-          style: Styles.textButtonOutlined,
+          OurStrings.btnBegin,
+          style: OurStyles.textButtonOutlined,
         ),
       ),
     );

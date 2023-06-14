@@ -1,3 +1,4 @@
+import 'package:cotadacao_moedas_app/app/components/app_bars/no_title_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/our_colors.dart';
@@ -31,18 +32,8 @@ class _BaseViewState extends State<BaseView> {
 
     return Scaffold(
       backgroundColor: OurColors.body,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: OurColors.body,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.close,
-            color: OurColors.primary,
-          ),
-          onPressed: () => widget.presenter.goBackToEmptyView(context),
-        ),
-      ),
+      appBar: NoTitleAppBar(
+        buttonFunction: () => widget.presenter.goBackToEmptyView(context)),
       body: Padding(
         padding: const EdgeInsets.all(paddHori),
         child: Stack(

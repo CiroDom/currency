@@ -1,7 +1,7 @@
-import 'package:cotadacao_moedas_app/res/styles.dart';
+import 'package:cotadacao_moedas_app/res/our_styles.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
+import '../../../res/our_strings.dart';
 
 class HeaderHistoric extends StatelessWidget {
   const HeaderHistoric({super.key});
@@ -12,8 +12,8 @@ class HeaderHistoric extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          Strings.historicExchangeHeader,
-          style: Styles.header,
+          OurStrings.historicExchangeHeader,
+          style: OurStyles.header,
         ),
       ],
     );

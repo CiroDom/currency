@@ -1,10 +1,13 @@
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
-class NoTitleAppBar extends StatelessWidget {
+class NoTitleAppBar extends StatelessWidget implements PreferredSizeWidget{
   const NoTitleAppBar({super.key, required this.buttonFunction});
 
   final VoidCallback buttonFunction;
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -21,4 +24,5 @@ class NoTitleAppBar extends StatelessWidget {
       ),
     );
   }
+  
 }

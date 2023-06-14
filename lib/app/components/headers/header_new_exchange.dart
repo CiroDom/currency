@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
-import '../../../../res/styles.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 
 class HeaderNewExchange extends StatelessWidget {
   const HeaderNewExchange({super.key});
@@ -12,8 +12,8 @@ class HeaderNewExchange extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          Strings.newExchangeHeader,
-          style: Styles.header,
+          OurStrings.newExchangeHeader,
+          style: OurStyles.header,
         ),
       ],
     );

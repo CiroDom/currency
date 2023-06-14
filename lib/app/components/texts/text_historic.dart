@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
-import '../../../../res/styles.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 
-class TextExchange extends StatelessWidget {
-  const TextExchange({super.key, required this.base, required this.target});
+class TextHistoric extends StatelessWidget {
+  const TextHistoric({super.key, required this.base, required this.target});
 
   final String base;
   final String target;
@@ -15,19 +15,19 @@ class TextExchange extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text.rich(
-          TextSpan(style: Styles.textNextHeader,
-            children: [
-            const TextSpan(text: Strings.textHistoric),
+          TextSpan(style: OurStyles.textNextHeader, children: [
+            const TextSpan(text: OurStrings.textHistoricPt1of2),
             TextSpan(
-              style: Styles.textNextHeaderBold,
+              style: OurStyles.textNextHeaderBold,
               text: '$target',
             ),
+            TextSpan(text: ' em '),
             TextSpan(
-              text: ' em '
+              style: OurStyles.textNextHeaderBold,
+              text: '$base',
             ),
             TextSpan(
-              style: Styles.textNextHeaderBold,
-              text: '$base',
+              text: OurStrings.textHistoricPt2of2
             ),
           ]),
         ),

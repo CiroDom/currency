@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:dio/dio.dart';
 
-import '../currency.dart';
 import '../enums/abbr_currency.dart';
+import '../models/currency.dart';
 
 class CurrencyRepo {
   final _dio = Dio(
@@ -14,7 +12,7 @@ class CurrencyRepo {
     final abbrCapsLock = abbr.toString().split('.').last.toUpperCase();
 
     if (abbr == AbbrCurrency.brl) {
-      final String price = '1.000';
+      const String price = '1.000';
 
       return price;
     }

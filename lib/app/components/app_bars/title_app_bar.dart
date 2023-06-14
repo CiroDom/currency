@@ -1,14 +1,18 @@
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
-import 'package:cotadacao_moedas_app/res/strings.dart';
-import 'package:cotadacao_moedas_app/res/styles.dart';
+import 'package:cotadacao_moedas_app/res/our_strings.dart';
+import 'package:cotadacao_moedas_app/res/our_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TitleAppBar extends StatelessWidget {
-  const TitleAppBar({super.key, required this.emptyView});
+class TitleAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const TitleAppBar({super.key, required this.emptyView, this.buttonFunction});
 
   final bool emptyView;
+  final VoidCallback? buttonFunction;
 
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -16,20 +20,21 @@ class TitleAppBar extends StatelessWidget {
       backgroundColor: OurColors.body,
       elevation: 0.0,
       title: const Text(
-        Strings.appBarTitle,
-        style: Styles.titleAppBar,
+        OurStrings.appBarTitle,
+        style: OurStyles.titleAppBar,
       ),
       actions: [
         emptyView
-          ? const SizedBox()
-          : IconButton(
-          icon: const Icon(
-            CupertinoIcons.arrow_right_arrow_left,
-            color: OurColors.primary,  
-          ),
-          onPressed: (){},
-        ),
+            ? const SizedBox()
+            : IconButton(
+                icon: const Icon(
+                  CupertinoIcons.arrow_right_arrow_left,
+                  color: OurColors.primary,
+                ),
+                onPressed: buttonFunction,
+              ),
       ],
     );
   }
+  
 }

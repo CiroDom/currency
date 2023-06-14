@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
-import '../../../../res/styles.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 
 class TextExchange extends StatelessWidget {
   const TextExchange({super.key, required this.base});
@@ -14,18 +14,13 @@ class TextExchange extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text.rich(
-          TextSpan(
-            style: Styles.textNextHeader,
-            children: [
-              const TextSpan(
-                text: Strings.textExchange
-              ),
-              TextSpan(
-                style: Styles.textNextHeaderBold,
-                text: '\n$base',
-              ),
-            ]
-          ),
+          TextSpan(style: OurStyles.textNextHeader, children: [
+            const TextSpan(text: OurStrings.textExchange),
+            TextSpan(
+              style: OurStyles.textNextHeaderBold,
+              text: '$base',
+            ),
+          ]),
         ),
       ],
     );

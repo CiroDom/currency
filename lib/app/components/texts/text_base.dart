@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../res/strings.dart';
-import '../../../../res/styles.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 
 class TextBase extends StatelessWidget {
   const TextBase({super.key});
@@ -12,8 +12,8 @@ class TextBase extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          Strings.textBase,
-          style: Styles.textNextHeader,
+          OurStrings.textBase,
+          style: OurStyles.textNextHeader,
         ),
       ],
     );

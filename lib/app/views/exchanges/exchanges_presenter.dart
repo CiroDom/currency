@@ -1,17 +1,21 @@
 import 'package:cotadacao_moedas_app/app/components/indicators/snake_progress_indic.dart';
-import 'package:cotadacao_moedas_app/app/general_classes/currency.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
-import 'package:cotadacao_moedas_app/app/general_classes/exchange.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/repos/currency_repo.dart';
+import 'package:cotadacao_moedas_app/app/general_classes/repos/historic_repo.dart';
+import 'package:cotadacao_moedas_app/app/views/historic/historic_view.dart';
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../res/strings.dart';
-import '../../../res/styles.dart';
+import '../../../main.dart';
+import '../../../res/our_strings.dart';
+import '../../../res/our_styles.dart';
 import '../../components/tile/our_tile.dart';
+import '../../general_classes/models/currency.dart';
+import '../../general_classes/models/exchange.dart';
+import '../historic/historic_presenter.dart';
 
-class ExchangePresenter {
-  ExchangePresenter({
+class ExchangesPresenter {
+  ExchangesPresenter({
     required this.baseIndex,
     required this.targetsIndexes,
     required this.repository,
@@ -21,7 +25,16 @@ class ExchangePresenter {
   final List<int> targetsIndexes;
   final CurrencyRepo repository;
 
-  void goToHistoric() {}
+  void goBackToEmptyView() {
+    Navigator.of(navigatorKey.currentContext!)
+        .popUntil((route) => route.isFirst);
+  }
+
+  void goToHistoric(HistoricPresenter presenter) {
+    Navigator.of(navigatorKey.currentContext!).push(MaterialPageRoute(
+      builder: (context) => HistoricView(presenter: presenter),
+    ));
+  }
 
   String getBaseName() => AbbrCurrency.values[baseIndex].name;
 
@@ -69,8 +82,8 @@ class ExchangePresenter {
           );
         } else if (snapshot.hasError) {
           return Text(
-            '${Strings.error}: ${snapshot.error}',
-            style: Styles.textNextHeaderBold,
+            '${OurStrings.error}: ${snapshot.error}',
+            style: OurStyles.textNextHeaderBold,
           );
         } else {
           final exchangesList = snapshot.data!;
@@ -80,28 +93,22 @@ class ExchangePresenter {
             historic: false,
             mainText: exchange.to.abbr.name,
             index: index,
-            onTap: (index) => goToHistoric(),
-            nextStep: () {},
+            onTap: (index) => {},
+            nextStep: () {
+              final repo = HistoricRepo();
+              final presenter = HistoricPresenter(
+                base: exchange.from,
+                target: exchange.to,
+                repository: repo,
+              );
+
+              goToHistoric(presenter);
+            },
             price: exchange.price,
+            howExpansive: exchange.howExpansive,
           );
         }
       },
     );
   }
 }
-
-
-
-  // Future<OurTile> buildOurTile(int index) async {
-  //   final exchangesList = await getExchanges();
-  //   final exchange = exchangesList[index];
-
-  //   return OurTile(
-  //     historic: false,
-  //     mainText: exchange.to.abbr.name,
-  //     index: index,
-  //     onTap: (index) => goToHistoric(),
-  //     onDoubleTap: () {},
-  //     price: exchange.price,
-  //   );
-  // }

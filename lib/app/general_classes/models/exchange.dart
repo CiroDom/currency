@@ -1,4 +1,4 @@
-import '../general_classes/enums/how_expansive.dart';
+import '../enums/how_expansive.dart';
 import 'currency.dart';
 
 class Exchange {
@@ -10,17 +10,18 @@ class Exchange {
   final Currency from;
   final Currency to;
   late double _ratio;
-  
-  double get price => _ratio = (double.parse(to.price) / double.parse(from.price));
+
+  double get price =>
+      _ratio = (double.parse(to.price) / double.parse(from.price));
 
   HowExpansive get howExpansive {
     if (_ratio < 1) {
       return HowExpansive.notAtAll;
     }
-    if (_ratio >= 1 && _ratio < 5) {
+    else if (_ratio >= 1 && _ratio < 5) {
       return HowExpansive.aLilBit;
     }
-      
+
     return HowExpansive.tooExpansive;
   }
 }

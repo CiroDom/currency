@@ -1,6 +1,6 @@
 import 'package:cotadacao_moedas_app/app/components/tile/our_tile.dart';
 import 'package:cotadacao_moedas_app/app/general_classes/enums/abbr_currency.dart';
-import 'package:cotadacao_moedas_app/app/general_classes/selection_indicator.dart';
+import 'package:cotadacao_moedas_app/app/general_classes/abstract_classes/selection_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../main.dart';

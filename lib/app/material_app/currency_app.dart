@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import '../views/empty/empty_presenter.dart';
-import '../views/empty/view_empty.dart';
+import '../views/empty/empty_view.dart';
 
 class CurrencyApp extends StatelessWidget {
   const CurrencyApp({super.key});

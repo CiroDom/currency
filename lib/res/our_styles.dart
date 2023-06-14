@@ -1,7 +1,7 @@
 import 'package:cotadacao_moedas_app/res/our_colors.dart';
 import 'package:flutter/material.dart';
 
-class Styles {
+class OurStyles {
   static const buttonOutlined = ButtonStyle(
     elevation: MaterialStatePropertyAll(0.0),
     side: MaterialStatePropertyAll<BorderSide>(
@@ -53,7 +53,7 @@ class Styles {
       fontSize: 16,
       fontWeight: FontWeight.w700);
 
-  static const textEmptyView = TextStyle(
+  static const textEmptyViewAndHistoric = TextStyle(
       color: OurColors.text1,
       fontFamily: 'Poppins',
       fontSize: 16,
@@ -66,16 +66,14 @@ class Styles {
       fontWeight: FontWeight.w400);
 
   static const textNextHeader = TextStyle(
-    color: OurColors.text1,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-    fontWeight: FontWeight.w400
-  );
+      color: OurColors.text1,
+      fontFamily: 'Poppins',
+      fontSize: 14,
+      fontWeight: FontWeight.w400);
 
   static const textNextHeaderBold = TextStyle(
-    color: OurColors.text1,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-    fontWeight: FontWeight.w700
-  );
+      color: OurColors.text1,
+      fontFamily: 'Poppins',
+      fontSize: 14,
+      fontWeight: FontWeight.w700);
 }

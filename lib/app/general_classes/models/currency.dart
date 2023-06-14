@@ -1,4 +1,4 @@
-import '../general_classes/enums/abbr_currency.dart';
+import '../enums/abbr_currency.dart';
 
 class Currency {
   Currency(
