@@ -22,11 +22,27 @@ class BaseView extends StatefulWidget {
 
 class _BaseViewState extends State<BaseView> {
   @override
+  void initState() {
+    super.initState();
+    widget.presenter.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    widget.presenter.removeListener(() {
+      setState(() {});
+    });
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: OurColors.body,
       appBar: NoTitleAppBar(
-        buttonFunction: () => widget.presenter.goBackToEmptyView(context)),
+          buttonFunction: () => widget.presenter.goBackToEmptyView(context)),
       body: Padding(
         padding: const EdgeInsets.all(OurValues.padd),
         child: Stack(

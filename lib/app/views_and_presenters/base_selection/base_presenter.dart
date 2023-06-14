@@ -15,6 +15,22 @@ class BasePresenter extends ChangeNotifier implements SelectionIndicator {
   List<int> get getSelecteds => _selected;
   final int listLenght = AbbrCurrency.values.length;
 
+  final List<VoidCallback> _listeners = [];
+
+  void addListener(VoidCallback listener) {
+    _listeners.add(listener);
+  }
+
+  void removeListener(VoidCallback listener) {
+    _listeners.remove(listener);
+  }
+
+  void notifyListeners() {
+    for (final listener in _listeners) {
+      listener.call();
+    }
+  }
+
   void select(int index) {
     if (_selected.contains(index)) return;
 

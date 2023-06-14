@@ -11,20 +11,20 @@ class OurTile extends StatefulWidget {
       {super.key,
       required this.historic,
       required this.mainText,
-      required this.index,
+      this.index,
       this.presenter,
-      required this.onTap,
+      this.onTap,
       this.nextStep,
       this.price,
       this.howExpansive});
 
   final bool historic;
   final String mainText;
-  final int index;
+  final int? index;
   final SelectionIndicator? presenter;
   final double? price;
   final HowExpansive? howExpansive;
-  final void Function(int) onTap;
+  final void Function(int)? onTap;
   final void Function()? nextStep;
 
   @override
@@ -57,11 +57,10 @@ class _OurTileState extends State<OurTile> {
     return SizedBox(
       height: 72,
       child: GestureDetector(
-        onTap: widget.historic
+        onTap: widget.historic == true && widget.onTap != null
             ? null
             : () {
-                widget.onTap(widget.index);
-                print('Tile ${widget.index}: $isSelected');
+                widget.onTap!(widget.index!);
               },
         onDoubleTap: widget.nextStep,
         child: AnimatedContainer(
