@@ -93,8 +93,7 @@ class ExchangesPresenter {
             historic: false,
             mainText: exchange.to.abbr.name,
             index: index,
-            onTap: (index) => {},
-            nextStep: () {
+            onClick: (index) {
               final repo = HistoricRepo();
               final presenter = HistoricPresenter(
                 base: exchange.from,

@@ -31,10 +31,10 @@ class _BaseViewState extends State<BaseView> {
 
   @override
   void dispose() {
+    super.dispose();
     widget.presenter.removeListener(() {
       setState(() {});
     });
-    super.dispose();
   }
 
   @override

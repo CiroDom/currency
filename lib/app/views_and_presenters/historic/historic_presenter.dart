@@ -46,7 +46,7 @@ class HistoricPresenter {
               historic: true,
               mainText: 'DIA ${pastExchange.date.day}',
               index: 0,
-              onTap: (int value) {},
+              onClick: (int value) {},
               price: pastExchange.getPriceInDouble(),
               howExpansive: pastExchange.getHowExpansive(),
             );

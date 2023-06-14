@@ -17,14 +17,17 @@ class BasePresenter extends ChangeNotifier implements SelectionIndicator {
 
   final List<VoidCallback> _listeners = [];
 
+  @override
   void addListener(VoidCallback listener) {
     _listeners.add(listener);
   }
 
+  @override
   void removeListener(VoidCallback listener) {
     _listeners.remove(listener);
   }
 
+  @override
   void notifyListeners() {
     for (final listener in _listeners) {
       listener.call();
@@ -62,7 +65,7 @@ class BasePresenter extends ChangeNotifier implements SelectionIndicator {
         mainText: AbbrCurrency.values[index].name,
         index: index,
         presenter: presenter,
-        onTap: (index) => select(index),
-        nextStep: () => goToTargetView(index));
+        onClick: (index) => select(index),
+        secondOnClick: () => goToTargetView(index));
   }
 }

@@ -22,6 +22,22 @@ class TargetView extends StatefulWidget {
 
 class _TargetViewState extends State<TargetView> {
   @override
+  void initState() {
+    super.initState();
+    widget.presenter.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.presenter.removeListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: OurColors.body,
@@ -55,23 +71,29 @@ class _TargetViewState extends State<TargetView> {
                   child: ListView.separated(
                     itemCount: widget.presenter.listLenght,
                     itemBuilder: (context, index) =>
-                        widget.presenter.buildOurTile(index),
+                        widget.presenter.buildOurTile(index, widget.presenter),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: OurValues.smallDistance),
                   ),
                 ),
               ],
             ),
-            Column(
+            const Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PageIndicator(isBaseCurrencyView: false),
-                ButtonFull(
-                    buttonFunction: widget.presenter.goToExchangeView,
-                    isOn: false)
+                PageIndicator(isBaseCurrencyView: false),
               ],
             ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                ButtonFull(
+                        buttonFunction: widget.presenter.goToExchangeView,
+                        isOn: widget.presenter.getSelecteds.isNotEmpty),
+              ],
+            )
           ],
         ),
       ),

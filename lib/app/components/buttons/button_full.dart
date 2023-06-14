@@ -1,5 +1,6 @@
 import 'package:cotadacao_moedas_app/res/our_strings.dart';
 import 'package:cotadacao_moedas_app/res/our_styles.dart';
+import 'package:cotadacao_moedas_app/res/our_values.dart';
 import 'package:flutter/material.dart';
 
 class ButtonFull extends StatelessWidget {
@@ -11,10 +12,8 @@ class ButtonFull extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double paddBottom = 16.0;
-
     return Padding(
-      padding: const EdgeInsets.only(bottom: paddBottom),
+      padding: const EdgeInsets.only(bottom: OurValues.padd),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -23,10 +22,12 @@ class ButtonFull extends StatelessWidget {
             height: 48,
             child: ElevatedButton(
               style: isOn ? OurStyles.buttonFullOn : OurStyles.buttonFullOff,
-              onPressed: buttonFunction,
-              child: const Text(
+              onPressed: isOn ? buttonFunction : null,
+              child: Text(
                 OurStrings.btnConc,
-                style: OurStyles.textButtonOutlined,
+                style: isOn
+                    ? OurStyles.textButtonFullOn
+                    : OurStyles.textButtonFullOff,
               ),
             ),
           ),

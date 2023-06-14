@@ -29,8 +29,20 @@ class OurStyles {
       fontSize: 16,
       fontWeight: FontWeight.w400);
 
-  static const textButtonOutlined = TextStyle(
-      color: OurColors.primary,
+  static const textButtonOutlinedBegin = TextStyle(
+      color: OurColors.text1,
+      fontFamily: 'Poppins',
+      fontSize: 16,
+      fontWeight: FontWeight.w400);
+
+  static const textButtonFullOn = TextStyle(
+      color: OurColors.backgroundAndText2,
+      fontFamily: 'Poppins',
+      fontSize: 16,
+      fontWeight: FontWeight.w400);
+
+  static const textButtonFullOff = TextStyle(
+      color: OurColors.body,
       fontFamily: 'Poppins',
       fontSize: 16,
       fontWeight: FontWeight.w400);

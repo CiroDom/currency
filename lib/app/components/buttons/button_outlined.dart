@@ -3,7 +3,8 @@ import 'package:cotadacao_moedas_app/res/our_styles.dart';
 import 'package:flutter/material.dart';
 
 class ButtonOutlined extends StatelessWidget {
-  const ButtonOutlined({super.key, required this.buttonFunction});
+  const ButtonOutlined(
+      {super.key, required this.buttonFunction});
 
   final VoidCallback buttonFunction;
 
@@ -17,7 +18,7 @@ class ButtonOutlined extends StatelessWidget {
         onPressed: buttonFunction,
         child: const Text(
           OurStrings.btnBegin,
-          style: OurStyles.textButtonOutlined,
+          style: OurStyles.textButtonOutlinedBegin
         ),
       ),
     );

@@ -18,17 +18,46 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
   List<int> get getSelecteds => _selecteds;
   final int listLenght = AbbrCurrency.values.length;
 
+  final List<VoidCallback> _listeners = [];
+
+  @override
+  void addListener(VoidCallback listener) {
+    _listeners.add(listener);
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    _listeners.remove(listener);
+  }
+
+  @override
+  void notifyListeners() {
+    for (final listener in _listeners) {
+      listener.call();
+    }
+  }
+
   String getbaseText() => AbbrCurrency.values[base].name;
 
-  void selectOrUnselect(int index) {
+  void select(int index) {
+    if (index == base) {
+      return;
+    }
+
+    if (!_selecteds.contains(index)) {
+      _selecteds.add(index);
+    }
+
+    notifyListeners();
+  }
+
+  void unselect(int index) {
     if (index == base) {
       return;
     }
 
     if (_selecteds.contains(index)) {
       _selecteds.remove(index);
-    } else {
-      _selecteds.add(index);
     }
 
     notifyListeners();
@@ -54,12 +83,13 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
     );
   }
 
-  OurTile buildOurTile(int index) {
+  OurTile buildOurTile(int index, SelectionIndicator presenter) {
     return OurTile(
         historic: false,
         mainText: AbbrCurrency.values[index].name,
         index: index,
-        onTap: (index) => selectOrUnselect(index),
-        nextStep: goToExchangeView);
+        presenter: presenter,
+        onClick: (index) => select(index),
+        secondOnClick: () => unselect(index),);
   }
 }
