@@ -14,7 +14,7 @@ class OurStrings {
   static const textExchange =
       'Confira os valores de compra com\nbase na moeda ';
   static const textHistoricPt1of2 =
-      'Fechamento dos valores de compra da moeda\n';
+      'Fechamento dos valores de compra de ';
   static const textHistoricPt2of2 = ' nos últimos quinze dias';
 
   static const error = 'Houve um erro na obtenção dos dados';
@@ -34,4 +34,6 @@ class OurStrings {
     'NOVEMBRO',
     'DEZEMBRO',
   ];
+
+  static const snackBarMessage = 'Impossível selecionar a moeda base';
 }

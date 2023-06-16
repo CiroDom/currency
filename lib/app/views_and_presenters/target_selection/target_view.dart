@@ -71,7 +71,7 @@ class _TargetViewState extends State<TargetView> {
                   child: ListView.separated(
                     itemCount: widget.presenter.listLenght,
                     itemBuilder: (context, index) =>
-                        widget.presenter.buildOurTile(index, widget.presenter),
+                        widget.presenter.buildOurTile(index, widget.presenter, context),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: OurValues.smallDistance),
                   ),

@@ -2,6 +2,7 @@ import 'package:cotadacao_moedas_app/app/general_classes/repos/currency_repo.dar
 import 'package:cotadacao_moedas_app/app/general_classes/abstract_classes/selection_indicator.dart';
 import 'package:cotadacao_moedas_app/app/views_and_presenters/exchanges/exchanges_presenter.dart';
 import 'package:cotadacao_moedas_app/main.dart';
+import 'package:cotadacao_moedas_app/res/our_strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/tile/our_tile.dart';
@@ -39,8 +40,18 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
 
   String getbaseText() => AbbrCurrency.values[base].name;
 
-  void select(int index) {
+  void showSnackBar(BuildContext context) {
+    const snackBar = SnackBar(
+      content: Text(OurStrings.snackBarMessage),
+      duration: Duration(milliseconds: 600),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void select(int index, BuildContext context) {
     if (index == base) {
+      showSnackBar(context);
       return;
     }
 
@@ -52,10 +63,6 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
   }
 
   void unselect(int index) {
-    if (index == base) {
-      return;
-    }
-
     if (_selecteds.contains(index)) {
       _selecteds.remove(index);
     }
@@ -83,13 +90,15 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
     );
   }
 
-  OurTile buildOurTile(int index, SelectionIndicator presenter) {
+  OurTile buildOurTile(
+      int index, SelectionIndicator presenter, BuildContext context) {
     return OurTile(
-        historic: false,
-        mainText: AbbrCurrency.values[index].name,
-        index: index,
-        presenter: presenter,
-        onClick: (index) => select(index),
-        secondOnClick: () => unselect(index),);
+      historic: false,
+      mainText: AbbrCurrency.values[index].name,
+      index: index,
+      presenter: presenter,
+      onClick: (index) => select(index, context),
+      secondOnClick: () => unselect(index),
+    );
   }
 }

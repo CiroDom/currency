@@ -63,11 +63,10 @@ class _OurTileState extends State<OurTile> {
             : isSelected
                 ? widget.secondOnClick
                 : () => widget.onClick!(widget.index!),
-        child: AnimatedContainer(
+        child: Container(
           decoration: isSelected
               ? OurDecorations.selectedCurrencyTile
               : OurDecorations.unselectedCurrencyTile,
-          duration: const Duration(milliseconds: 1),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

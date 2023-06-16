@@ -21,7 +21,7 @@ class TextHistoric extends StatelessWidget {
               style: OurStyles.textNextHeaderBold,
               text: '$target',
             ),
-            TextSpan(text: ' em '),
+            TextSpan(text: '\n em '),
             TextSpan(
               style: OurStyles.textNextHeaderBold,
               text: '$base',
