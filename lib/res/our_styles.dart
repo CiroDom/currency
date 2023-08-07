@@ -30,7 +30,7 @@ class OurStyles {
       fontWeight: FontWeight.w400);
 
   static const textButtonOutlinedBegin = TextStyle(
-      color: OurColors.text1,
+      color: OurColors.primary,
       fontFamily: 'Poppins',
       fontSize: 16,
       fontWeight: FontWeight.w400);

@@ -19,25 +19,6 @@ class TargetPresenter extends ChangeNotifier implements SelectionIndicator {
   List<int> get getSelecteds => _selecteds;
   final int listLenght = AbbrCurrency.values.length;
 
-  final List<VoidCallback> _listeners = [];
-
-  @override
-  void addListener(VoidCallback listener) {
-    _listeners.add(listener);
-  }
-
-  @override
-  void removeListener(VoidCallback listener) {
-    _listeners.remove(listener);
-  }
-
-  @override
-  void notifyListeners() {
-    for (final listener in _listeners) {
-      listener.call();
-    }
-  }
-
   String getbaseText() => AbbrCurrency.values[base].name;
 
   void showSnackBar(BuildContext context) {

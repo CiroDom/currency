@@ -9,11 +9,10 @@ class CurrencyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
-      home: EmptyView(presenter: EmptyPresenter()),
+      home: EmptyView(controller: EmptyPresenter()),
     );
   }
 }

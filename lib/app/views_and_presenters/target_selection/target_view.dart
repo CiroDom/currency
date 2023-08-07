@@ -8,34 +8,13 @@ import '../../../res/our_values.dart';
 import '../../components/headers/header_new_exchange.dart';
 import '../../components/indicators/page_indicator.dart';
 
-class TargetView extends StatefulWidget {
+class TargetView extends StatelessWidget {
   const TargetView({
     super.key,
     required this.presenter,
   });
 
   final TargetPresenter presenter;
-
-  @override
-  State<TargetView> createState() => _TargetViewState();
-}
-
-class _TargetViewState extends State<TargetView> {
-  @override
-  void initState() {
-    super.initState();
-    widget.presenter.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    widget.presenter.removeListener(() {
-      setState(() {});
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +29,7 @@ class _TargetViewState extends State<TargetView> {
             Icons.close,
             color: OurColors.primary,
           ),
-          onPressed: () => widget.presenter.goBackToEmptyView(context),
+          onPressed: () => presenter.goBackToEmptyView(context),
         ),
       ),
       body: Padding(
@@ -63,18 +42,23 @@ class _TargetViewState extends State<TargetView> {
               children: [
                 const HeaderNewExchange(),
                 const SizedBox(height: OurValues.bigDistance),
-                TextTarget(currencyName: widget.presenter.getbaseText()),
+                TextTarget(currencyName: presenter.getbaseText()),
                 const SizedBox(
                   height: OurValues.bigDistance,
                 ),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: widget.presenter.listLenght,
-                    itemBuilder: (context, index) =>
-                        widget.presenter.buildOurTile(index, widget.presenter, context),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: OurValues.smallDistance),
-                  ),
+                AnimatedBuilder(
+                  animation: presenter,
+                  builder: (context, child) {
+                    return Expanded(
+                      child: ListView.separated(
+                        itemCount: presenter.listLenght,
+                        itemBuilder: (context, index) =>
+                            presenter.buildOurTile(index, presenter, context),
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: OurValues.smallDistance),
+                      ),
+                    );
+                  }
                 ),
               ],
             ),
@@ -85,14 +69,19 @@ class _TargetViewState extends State<TargetView> {
                 PageIndicator(isBaseCurrencyView: false),
               ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                ButtonFull(
-                        buttonFunction: widget.presenter.goToExchangeView,
-                        isOn: widget.presenter.getSelecteds.isNotEmpty),
-              ],
+            AnimatedBuilder(
+              animation: presenter,
+              builder: (context, child) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    ButtonFull(
+                            buttonFunction: presenter.goToExchangeView,
+                            isOn: presenter.getSelecteds.isNotEmpty),
+                  ],
+                );
+              }
             )
           ],
         ),

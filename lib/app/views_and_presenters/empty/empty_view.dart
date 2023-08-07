@@ -9,9 +9,9 @@ import '../../components/buttons/button_outlined.dart';
 import 'empty_presenter.dart';
 
 class EmptyView extends StatelessWidget {
-  const EmptyView({super.key, required this.presenter});
+  const EmptyView({super.key, required this.controller});
 
-  final EmptyPresenter presenter;
+  final EmptyPresenter controller;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class EmptyView extends StatelessWidget {
                 height: OurValues.midDistance,
               ),
               ButtonOutlined(
-                buttonFunction: () => presenter.goToBaseCurrency(),
+                buttonFunction: controller.goToBaseCurrency,
               )
             ],
           ),
